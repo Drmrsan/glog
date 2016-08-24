@@ -1,10 +1,15 @@
 %h2.text-center List of GloG users
 
+.col-xs-4.col-xs-offset-4.text-center				
+	=will_paginate @posts, renderer: BootstrapPagination::Rails
+
 -@users.each do |user|
 	.col-xs-4.col-xs-offset-4.well.text-center
 		%p
 			=gravatar_for user
-		%p
-			=user.email
+		%p Username: #{user.username}
 		%h4 
-			=link_to "Profile", user_path(user)
+			=link_to "View profile", user_path(user), class:"btn btn-success btn-sm"
+
+.col-xs-4.col-xs-offset-4.text-center				
+	=will_paginate @posts, renderer: BootstrapPagination::Rails

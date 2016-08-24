@@ -1,3 +1,10 @@
+%h1.text-center Blog posts index page
+%br/
+
+%div.text-center					
+	=will_paginate @posts, renderer: BootstrapPagination::Rails
+%br/
+
 -@posts.each do |post|
 	.post-container
 		.well
@@ -12,3 +19,5 @@
 				%i
 					by
 					=post.user.email
+%div.text-center					
+	=will_paginate @posts, renderer: BootstrapPagination::Rails

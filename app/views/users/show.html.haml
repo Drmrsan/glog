@@ -3,13 +3,27 @@
 		.well.text-center
 			%p
 				=gravatar_for @user
-			%p
-				=@user.email
+			%p Username: #{@user.username}
+			%p Email: #{@user.email}
+			%p Account created at: #{ @user.created_at.strftime( "%d %B, %Y" )}
+			%p Posts created: #{ @user.posts.count }
+			=link_to "Back to Users", users_path, class:"btn btn-default btn-sm"
 .row
 	.col-xs-8.col-xs-offset-2
-	-@user_posts.each do |user_post|
+	%div.text-center
+		=will_paginate @post, renderer: BootstrapPagination::Rails
+
+	-@post.each do |post|
 		.well
 			%h2
-				=user_post.title
+				=post.title
 			%p
-				=user_post.description
+				=post.description
+			.post-action
+			=link_to "Back", posts_path, class: "btn btn-default btn-sm"
+			-if user_signed_in? && current_user.id == post.user_id
+				=link_to "Edit", edit_post_path(@post), class: "btn btn-warning btn-sm"
+				=link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"
+
+%div.text-center
+	=will_paginate @post, renderer: BootstrapPagination::Rails

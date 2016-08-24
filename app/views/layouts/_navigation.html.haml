@@ -39,7 +39,10 @@
 
 					%li.dropdown
 						%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-							Profile
+							-if current_user.username.blank?
+								Profile
+							-else
+								=current_user.username
 							%span.caret
 						%ul.dropdown-menu{:role => "menu"}
 							%li
