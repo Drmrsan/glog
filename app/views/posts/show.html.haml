@@ -1,2 +1,18 @@
-%h1 Posts#show
-%p Find me in app/views/posts/show.html.haml
+.post-container
+	.well
+		%h2
+			=@post.title
+		%p 
+			=@post.description
+		%small
+			Created 
+			=time_ago_in_words(@post.created_at)
+			ago
+			%i
+				by
+				=@post.user.email
+		%hr/
+		.post-action
+			=link_to "Back", posts_path, class: "btn btn-default btn-sm"
+			=link_to "Edit", edit_post_path(@post), class: "btn btn-warning btn-sm"
+			=link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"

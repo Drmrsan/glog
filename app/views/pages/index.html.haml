@@ -1,1 +1,22 @@
 =render "layouts/header"
+
+%h3 Latest posts
+%p.text-right
+	= link_to "View all posts", posts_path
+
+-@posts.each do |post|
+	.post-container
+		.well
+			%h2
+				=link_to post.title, post_path(post)
+			%p 
+				=post.description
+			%small
+				Created 
+				=time_ago_in_words(post.created_at)
+				ago
+				%i
+					by
+					=post.user.email
+
+=will_paginate @posts, renderer: BootstrapPagination::Rails

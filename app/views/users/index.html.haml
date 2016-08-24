@@ -1,0 +1,10 @@
+%h2.text-center List of GloG users
+
+-@users.each do |user|
+	.col-xs-4.col-xs-offset-4.well.text-center
+		%p
+			=gravatar_for user
+		%p
+			=user.email
+		%h4 
+			=link_to "Profile", user_path(user)

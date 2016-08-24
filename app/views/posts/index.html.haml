@@ -1,2 +1,14 @@
-%h1 Posts#index
-%p Find me in app/views/posts/index.html.haml
+-@posts.each do |post|
+	.post-container
+		.well
+			%h2
+				=link_to post.title, post_path(post)
+			%p 
+				=truncate(post.description, length: 100)
+			%small
+				Created 
+				=time_ago_in_words(post.created_at)
+				ago
+				%i
+					by
+					=post.user.email
