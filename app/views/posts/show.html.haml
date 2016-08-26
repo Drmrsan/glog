@@ -1,9 +1,11 @@
 .post-container
 	.well
+		#post_show_image
+			=image_tag @post.image.url if @post.image?
 		%h2
 			=@post.title
 		%p 
-			=@post.description
+			=simple_format @post.description
 		%small
 			Created 
 			=time_ago_in_words(@post.created_at)
@@ -17,3 +19,10 @@
 			-if user_signed_in? && current_user.id == @post.user_id
 				=link_to "Edit", edit_post_path(@post), class: "btn btn-warning btn-sm"
 				=link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm"
+
+		%hr/
+		%h3 Comments:
+		=render @post.comments
+		%hr/
+		%h3 Add comment:
+		=render "comments/form"

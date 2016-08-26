@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   get "contact",  to: "pages#contact"
   get "users", 		to: "users#index"
 
-  resources :posts
+  resources :posts do
+  	resources :comments
+  end
+  
   resources :users, only: [:show]
+  
 
  
 end

@@ -1,5 +1,10 @@
-%h2
+%h2.text-center
   Edit #{resource_name.to_s.humanize}
+  
+.row
+  .col-xs-2.col-xs-offset-5.text-center
+    =gravatar_for(@user, 100)
+
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = f.error_notification
   .form-inputs

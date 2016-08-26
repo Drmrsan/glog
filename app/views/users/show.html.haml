@@ -2,7 +2,7 @@
 	.col-xs-4.col-xs-offset-4
 		.well.text-center
 			%p
-				=gravatar_for @user
+				=gravatar_for @user, 100
 			%p Username: #{@user.username}
 			%p Email: #{@user.email}
 			%p Account created at: #{ @user.created_at.strftime( "%d %B, %Y" )}
@@ -16,7 +16,7 @@
 	-@post.each do |post|
 		.well
 			%h2
-				=post.title
+				=link_to post.title, post_path(post)
 			%p
 				=post.description
 			.post-action

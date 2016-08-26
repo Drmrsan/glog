@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :update, :edit, :destroy]
 
   def index
-    @posts = Post.all.paginate(page: params[:page], per_page: 3)
+    @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page: 3)
   end
 
   def new
@@ -27,9 +27,17 @@ class PostsController < ApplicationController
   end
 
   def update
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @post.destroy
+    flash[:success] = "Post successfully deleted!"
+    redirect_to posts_path
   end
 
   private

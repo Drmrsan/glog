@@ -6,7 +6,7 @@
 -@users.each do |user|
 	.col-xs-4.col-xs-offset-4.well.text-center
 		%p
-			=gravatar_for user
+			=gravatar_for user, 100
 		%p Username: #{user.username}
 		%h4 
 			=link_to "View profile", user_path(user), class:"btn btn-success btn-sm"
