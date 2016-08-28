@@ -18,6 +18,8 @@ gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'carrierwave', '~> 0.11.2'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'fog', '~> 1.38'
+gem 'acts_as_votable', '~> 0.10.0'
+gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 
 group :development, :test do
   gem 'byebug'

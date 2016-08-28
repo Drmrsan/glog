@@ -1,0 +1,17 @@
+-obj.each do |post|
+	.post-container
+		.well
+			%h2
+				=link_to post.title, post_path(post)
+			#post_index_image
+				=image_tag post.image_url if post.image?
+			%p 
+				=truncate(post.description, length: 300)
+			-if post.categories.any?
+				%p Categories:
+				=render post.categories
+			%small
+				Created 
+				=time_ago_in_words(post.created_at)
+				ago
+				%i by #{post.user.email}

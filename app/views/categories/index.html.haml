@@ -1,0 +1,10 @@
+%h3.text-center Category list
+.category-list
+	%ul.col-xs-4.col-xs-offset-4.text-center
+		-@categories.each do |category|
+			%li.well
+				=link_to category.name, category_path(category)
+
+		.text-center
+			-if current_user.admin?
+				=link_to "New Category", new_category_path, class:"btn btn-success"

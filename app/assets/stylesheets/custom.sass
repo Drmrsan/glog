@@ -1,15 +1,42 @@
 @import "bootstrap-sprockets"
 @import "bootstrap"
+@import "font-awesome"
+
+.well
+	background-color: #D2E9F6
 
 .error_listing
 	margin-top: 10px
 
+.navbar-default
+	background-color: #2C394A
+	border: none
+	border-radius: 0
+
+.navbar-default .navbar-nav > li > a
+	color: #fff
+	&:hover
+		color: #FCF3A4
+
 .navbar-brand
 	font-weight: bold
-	font-size: 2.2rem
+	font-size: 2.5rem
+
+
+.navbar-default .navbar-brand
+	color: #fff
+	&:hover
+		color: #fff
 
 .profile-img
 	border-radius: 5px
+
+.post-container
+	.well
+		background-color: #D2E9F6
+
+.jumbotron
+	background-color: #FCF3A4
 
 #post_show_image
 	img
@@ -24,5 +51,36 @@
 		height: auto
 
 .comment
+	position: relative
+	.comment-delete
+		display: none
+	&:hover .comment-delete
+		display: block
+		position: absolute
+		right: 20px
+		top: 20px
+	.comment-content
+		margin-top: 20px
+	.comment-username
+		font:
+			weight: bold
+			size: 1.4em
+	.comment-delete
+		display: none
 	.well
-		background-color: #DCDCDD
+		background-color: #fff6f2
+	
+.category-list
+	margin-top: 40px
+	ul
+		list-style: none
+
+.badge
+	padding: 6px 10px
+	background-color: #2C394A
+	margin-top: 10px
+	a
+		color: white
+		text-decoration: none
+.input_checkbox
+	margin-left: 20px

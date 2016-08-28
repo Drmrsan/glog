@@ -5,21 +5,7 @@
 	=will_paginate @posts, renderer: BootstrapPagination::Rails
 %br/
 
--@posts.each do |post|
-	.post-container
-		.well
-			%h2
-				=link_to post.title, post_path(post)
-			#post_index_image
-				=image_tag post.image_url if post.image?
-			%p 
-				=truncate(post.description, length: 300)
-			%small
-				Created 
-				=time_ago_in_words(post.created_at)
-				ago
-				%i
-					by
-					=post.user.email
+=render 'post', obj: @posts
+
 %div.text-center					
 	=will_paginate @posts, renderer: BootstrapPagination::Rails

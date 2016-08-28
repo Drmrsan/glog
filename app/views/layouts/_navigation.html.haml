@@ -25,6 +25,10 @@
 								=link_to "New post", new_post_path
 							%li
 								=link_to "List of Users", users_path
+							%li
+								=link_to "Categories List", categories_path
+							%li
+								=link_to "Create new category", new_category_path if current_user.admin?
 							%li.divider
 							%li
 								=link_to "All posts", posts_path
@@ -40,8 +44,8 @@
 						=gravatar_for(current_user, 50)
 					%li.dropdown
 						%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-							-if current_user.username.blank?
-								Profile
+							-if current_user.admin?
+								#{current_user.username + " (admin)" }
 							-else
 								=current_user.username
 							%span.caret

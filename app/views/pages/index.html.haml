@@ -20,5 +20,7 @@
 				%i
 					by
 					=post.user.email
+				%p
+					=render post.categories
 
 =will_paginate @posts, renderer: BootstrapPagination::Rails

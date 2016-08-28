@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   def create
   	@post = Post.find(params[:post_id])
   	@comment = @post.comments.create(comment_params)
@@ -12,8 +13,15 @@ class CommentsController < ApplicationController
   end
 
   def show
-  	@post = Post.find(params[:id])
-  	@comment = @post.comments(params[:post_id])
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments(params[:id])
+    @user = User.find(params[:id])
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to :back
   end
 
   private
