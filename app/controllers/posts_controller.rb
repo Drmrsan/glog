@@ -3,7 +3,13 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :update, :edit, :destroy, :upvote, :downvote]
 
   def index
-    @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page: 3)
+
+    if params[:search]
+      @posts = Post.search(params[:search]).paginate(page: params[:page], per_page: 3)
+    else
+      @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page: 3)
+   end
+
   end
 
   def new

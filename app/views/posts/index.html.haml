@@ -1,11 +1,16 @@
 %h1.text-center Blog posts index page
 %br/
+-if @posts.present?
+	
+	%div.text-center					
+		=will_paginate @posts, renderer: BootstrapPagination::Rails
+	%br/
 
-%div.text-center					
-	=will_paginate @posts, renderer: BootstrapPagination::Rails
-%br/
+	=render 'post', obj: @posts
 
-=render 'post', obj: @posts
 
-%div.text-center					
-	=will_paginate @posts, renderer: BootstrapPagination::Rails
+	%div.text-center					
+		=will_paginate @posts, renderer: BootstrapPagination::Rails
+-else
+	%p There is no posts with content you've searched
+	=link_to "Back to posts", posts_path, class:"btn btn-default"

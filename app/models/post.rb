@@ -12,6 +12,11 @@ class Post < ActiveRecord::Base
 	validate  :image_size
 
 
+	def self.search(query)
+	  where("title like ?", "%#{query}%")
+	  where("description like ?", "%#{query}%")
+	end
+
   private
 
     # Validates the size of an uploaded picture.
